@@ -8,7 +8,7 @@ export const authOptions = {
     providers: [
         CredentialsProvider({
             id: 'credentials',
-            name: 'Credentials',
+            name: 'credentials',
             credentials: {
                 email: {
                     label: 'Email',
@@ -27,7 +27,7 @@ export const authOptions = {
                     if(user){
                         const isCorrectPassword = await bcrypt.compare(
                             credentials.password, 
-                            user.oassword
+                            user.password
                         );
 
                         if(isCorrectPassword){
@@ -44,7 +44,7 @@ export const authOptions = {
 
     callbacks: {
         async signIn({user, account}){
-            if(account?.providers == 'credentials'){
+            if(account?.provider == 'credentials'){
                 return true;
             }
         }

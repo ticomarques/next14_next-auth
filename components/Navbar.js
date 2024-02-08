@@ -25,10 +25,10 @@ function Navbar() {
             </li>
           </div>
 
-          { /* ----------------------- */}
+          
 
           <div className="auth">
-            <>
+          {!session ? (<>
               <li className="mx-4 mt-[2rem]">
                   <Link href="/login" className="text-white font-bold">
                     Login
@@ -39,7 +39,17 @@ function Navbar() {
                   Register
                   </Link>
               </li>
-            </>
+            </>) : (
+              <>
+                <p className="mb-4">{session.user?.email}</p>
+                <li>
+                  <button onClick={() => {
+                    signOut()
+                  }} className="p-2 px-5 mb-[2rem] bg-red-600 rounded">Logout</button>
+                </li>
+              </>
+            )}
+            
           </div>
 
 

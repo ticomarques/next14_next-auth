@@ -27,8 +27,6 @@ function Register() {
         const password = e.target[2].value
         const confirmPassword = e.target[3].value
 
-        console.log(username, email, password, confirmPassword)
-
         if (!username || !email || !password || !confirmPassword) {
             toast.error('Please fill all the input fields.')
             return;
@@ -53,6 +51,7 @@ function Register() {
             if(res.status === 400){
                 toast.error("This email is already registered.")
             } else if (res.status === 201){
+                toast.success("User created sucessfully.")
                 router.push("/login")
             }
 
